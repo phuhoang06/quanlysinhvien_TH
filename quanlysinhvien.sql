@@ -19,10 +19,16 @@ classID int not null,
   FOREIGN KEY (ClassId) REFERENCES Class (ClassID)
 );
 
-create table subject(
-subid int not null primary key auto_increment,
-subName varchar(30) not null,
-credit tinyint not null default (1) check(credit>=1)
+CREATE TABLE Subject(
+
+         SubId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+         SubName VARCHAR(30) NOT NULL,
+
+         Credit TINYINT NOT NULL DEFAULT 1 CHECK ( Credit >= 1 ),
+
+         Status BIT DEFAULT 1
+
 );
 
 create table mark(
@@ -36,3 +42,32 @@ examtimes tinyint default 1,
     foreign key (studentid) references student(studentid)
     
 );
+
+insert into class(classid, classname, startdate, status)
+values
+ (1, 'a1', "2018-12-20", 1),
+ (2, 'a2', "2008-12-22", 1),
+ (3, 'b3',curdate(),0)
+;
+
+insert into student(studentid, studentname, address, phone, status, classid)
+values
+ (1, 'hung', 'hanoi', 0312113113, 1, 1),
+ (2,'hoa', 'haiphong', null, 1,1),
+ (3,'manh','hcm', 0123123123,0,2)
+;
+
+insert into subject(subid,subname,credit,status)
+values 
+(1,'cf',5,1),
+(2,'c',6,1),
+(3,'hdj',5,1),
+(4,'rdbms',10,1)
+;
+
+insert into mark(markid,subid,studentid,mark,examtimes)
+values 
+(1,1,1,8,1),
+(2,1,2,10,2),
+(3,2,1,12,1)
+;
