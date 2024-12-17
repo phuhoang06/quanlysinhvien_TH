@@ -96,3 +96,21 @@ FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.Su
 SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
 FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId
 WHERE Sub.SubName = 'CF';
+
+select * from student
+where substring(studentname,1,1)  = "h";
+
+select * from class 
+where month(startdate) = 12;
+
+select * from subject
+where credit >= 3 and credit < 6;
+
+update student 
+set classid = 2
+where studentname like '%hung';
+
+select S.studentname , sub.subname , m.mark 
+from student s join mark m on s.studentid = m.studentid join subject sub on m.subid = sub.subid
+order by studentname , subname , mark desc;
+
